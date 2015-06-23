@@ -1,7 +1,7 @@
 __author__ = 'ritchie'
 import cv2
 
-image = cv2.imread("../img/jurassic-park-tour-jeep.jpg")
+image = cv2.imread("../img_bk/jurassic-park-tour-jeep.jpg")
 # cv2.imshow('original', image)
 # cv2.waitKey(0)
 
@@ -28,5 +28,5 @@ print image.shape
 cropped = image[70:170,440:540]
 cv2.imshow("cropped", cropped)
 cv2.waitKey(0)
-cv2.imwrite("../out/thumbnail.png", cropped)
+cv2.imwrite("../_bk/thumbnail.png", cropped)
 
