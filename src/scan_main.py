@@ -3,7 +3,7 @@ __author__ = 'ritchie'
 # Import the necessary packages
 import argparse
 from skimage.filter import threshold_adaptive
-from src.pyimage.transform import four_point_transform
+from pyimage.transform import four_point_transform
 from pyimage import imutils
 import cv2
 
@@ -12,7 +12,14 @@ import cv2
 ap = argparse.ArgumentParser()
 ap.add_argument("-i","--image",required = True,
                 help = "Path to the image to be scanned")
+ap.add_argument("-o","--out",required=True,
+                help = " Path to the image to be saved")
+ap.add_argument("-s","--size",required=True,
+                help = "Size of the image to be saved")
 args = vars(ap.parse_args())
+
+size = int(args["size"])
+out = args["out"]
 
 # edge detection
 image = cv2.imread(args["image"])
@@ -56,6 +63,8 @@ warped = threshold_adaptive(warped,250,offset=10)
 warped = warped.astype("uint8")*255
 
 print "STEP 3: Apply perspective transform"
-cv2.imshow("Original",imutils.resize(orig,height = 800))
-cv2.imshow("Scanned",imutils.resize(warped,height=800))
+cv2.imshow("Original",imutils.resize(orig,height = size))
+cv2.imshow("Scanned",imutils.resize(warped,height = size))
+
+cv2.imwrite(out, warped)
 cv2.waitKey(0)
