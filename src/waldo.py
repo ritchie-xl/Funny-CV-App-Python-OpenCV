@@ -13,6 +13,7 @@ args = vars(ap.parse_args())
 
 puzzle = cv2.imread(args["puzzle"])
 waldo = cv2.imread(args["waldo"])
+waldo = imutils.resize(waldo,width=15)
 (waldoHeight, waldoWidth) = waldo.shape[:2]
 
 result = cv2.matchTemplate(puzzle,waldo,cv2.TM_CCOEFF)
