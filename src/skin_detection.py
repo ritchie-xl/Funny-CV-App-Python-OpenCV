@@ -7,7 +7,7 @@ import cv2
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-v","--video",
-                help = "Patht o the (optional) video file")
+                help = "Path to the (optional) video file")
 args = vars(ap.parse_args())
 
 # Define the upper and lower boundaries of the HSV pixel
