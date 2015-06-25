@@ -50,7 +50,7 @@ def main():
             backProj = cv2.calcBackProject([hsv], [0], roiHist, [0,180], 1)
 
             (r,roiBox)=cv2.CamShift(backProj,roiBox,termination)
-            pts = np.ini0(cv2.cv.BoxPoints(r))
+            pts = np.intii0(cv2.cv.BoxPoints(r))
             cv2.polylines(frame,[pts],True,(0,255,0),2)
 
         cv2.imshow("frame",frame)

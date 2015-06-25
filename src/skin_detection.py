@@ -13,8 +13,8 @@ args = vars(ap.parse_args())
 # Define the upper and lower boundaries of the HSV pixel
 # intensities to be considered 'skin'
 # !---importance, these boundaries are in HSV color space, not RGB color space
-lower = np.array([0,60,100],dtype='uint8')
-upper = np.array([20,255,255],dtype='uint8')
+lower = np.array([0,40,100],dtype='uint8')
+upper = np.array([0,255,255],dtype='uint8')
 
 # Detecting camera
 if not args.get("video",False):
@@ -28,7 +28,7 @@ while True:
     if args.get("video") and not grabbed:
         break
 
-    frame = imutils.resize(frame, width=400)
+    frame = imutils.resize(frame, width=600)
     converted = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     skinMask = cv2.inRange(converted,lower,upper)
 
